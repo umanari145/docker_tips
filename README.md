@@ -28,6 +28,16 @@ docker push umanari145/centos6:latest
 
 ```
 
+### Dockerfileのbuild
+
+imageを作成する<br>
+カレントディレクトにDockerfileがあることが前提
+
+
+```
+docker build -t (イメージ名:タグ名)<例web:latest>  .
+```
+
 
 ### コンテナ作成
 
