@@ -92,7 +92,7 @@ docker-compose down
 docker-compose rm
 ```
 
-docker compose一覧
+docker compose 一覧<br>
 https://qiita.com/nikadon/items/995c5705ff1171f7484d
 
 ## Vagrant
@@ -103,7 +103,7 @@ https://qiita.com/nikadon/items/995c5705ff1171f7484d
 ```
 vagrant init;
 
-#最初からイメージを記述するう場合
+#最初からイメージを記述する場合
 vagrant init bento/centos-6.7;
 
 ```
@@ -111,7 +111,7 @@ vagrant init bento/centos-6.7;
 ### vagrant 起動&停止
 
 ```
-#起動
+#起動(imageファイルないときは読み込み)
 vagrant up;
 
 #停止

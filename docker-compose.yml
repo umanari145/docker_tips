@@ -7,6 +7,8 @@ services:
         dockerfile: "Dockerfile"
     ports:
         - "8080:80"
+    volumes:
+        - ~/docker_dev/sampleapp:/var/www/html
     links:
         - "db:db"
   db:
