@@ -71,6 +71,25 @@ docker run -it  --name mysql -e MYSQL_ROOT_PASSWORD=pass  -d mysql:5.7
 docker run -it -p 8080:80 --name php56 --link mysql:mysql -d php56:apache
 ```
 
+### docker-compose(複数のコンテナの同時起動)
+
+```
+# 実行
+docker-compose up
+
+# バックグランドで実行したい時(-dつけないとコンソール開いて実行中になる)
+docker-compose up -d
+
+# 停止
+docker-compose down
+
+# 削除
+docker-compose rm
+```
+
+docker compose一覧
+https://qiita.com/nikadon/items/995c5705ff1171f7484d
+
 ## Vagrant
 
 ### vagrant ファイル作成
