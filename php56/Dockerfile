@@ -1,5 +1,3 @@
-#php5.6
 FROM php:5.6-apache
-
-#ポート開放
-EXPOSE 80
+RUN apt-get update && \
+  docker-php-ext-install pdo_mysql mysqli mbstring

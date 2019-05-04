@@ -61,6 +61,16 @@ docker exec -it php-apache /bin/bash
 
 ```
 
+### php+mysql別々コンテナでの連携
+```
+# mysqlのイメージ起動(-dでバッググランド起動)
+# -e MYSQL_ROOT_PASSWORD=passないと落ちる
+docker run -it  --name mysql -e MYSQL_ROOT_PASSWORD=pass  -d mysql:5.7
+
+# mysqlを見えるようにする(--link mysql:mysqlがそのオプション)
+docker run -it -p 8080:80 --name php56 --link mysql:mysql -d php56:apache
+```
+
 ## Vagrant
 
 ### vagrant ファイル作成
