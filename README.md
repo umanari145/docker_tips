@@ -51,6 +51,16 @@ docker run -it -p 8080:80 -v /Users/matsumoto/docker_dev:/var/www/html --name ce
 
 ```
 
+### コンテナ作成中へのコマンド
+
+#### docker exec コンテナへのログイン
+```
+docker exec -it コンテナ名
+#例
+docker exec -it php-apache /bin/bash
+
+```
+
 ## Vagrant
 
 ### vagrant ファイル作成
