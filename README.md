@@ -71,19 +71,24 @@ docker run -it  --name mysql -e MYSQL_ROOT_PASSWORD=pass  -d mysql:5.7
 docker run -it -p 8080:80 --name php56 --link mysql:mysql -d php56:apache
 ```
 
+https://qiita.com/naga3/items/be1a062075db9339762d
+
 ### docker-compose(複数のコンテナの同時起動)
 
 ```
-# 実行
+# 実行(通常時はimageがすでに出来上がっている)
 docker-compose up
 
 # バックグランドで実行したい時(-dつけないとコンソール開いて実行中になる)
 docker-compose up -d
 
+# Dockerfileを再ビルド()
+docker-compose build
+
 # 停止
 docker-compose down
 
-# 削除
+# コンテナ削除
 docker-compose rm
 ```
 
