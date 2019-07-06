@@ -4,6 +4,21 @@ Docker&Vagrantの基本コマンドなど
 
 ## Docker
 
+
+フォルダ構成
+
+- public_html 実ソースが同期される場所
+- php5.6 PHP5.6のDockerfile
+- php7.2 PHP7.2のDockerfile
+- public_html 実ソースが同期される場所
+- docker-composer.yml 複数コンテナの自動起動
+
+```
+#実ソースへのシンボリックリンク
+ln -s /Library/WebServer/Documents/XXXX/ public_html
+public_html/XXXXというディレクトリが作成される
+```
+
 ### imageのpull&list表示
 
 
@@ -14,6 +29,8 @@ docker pull centos:6
 #imageのリスト表示
 docker images
 
+#image削除
+docker rmi イメージID
 ```
 
 ### commit&push
@@ -49,6 +66,9 @@ docker build -t (イメージ名:タグ名)<例web:latest>  .
 
 docker run -it -p 8080:80 -v /Users/matsumoto/docker_dev:/var/www/html --name centos umanari145/centos6  /bin/bash
 
+#稼働中のコンテナのプロセス確認
+docker ps -a
+
 ```
 
 ### コンテナ作成中へのコマンド
@@ -79,20 +99,20 @@ https://qiita.com/naga3/items/be1a062075db9339762d
 ### docker-compose(複数のコンテナの同時起動)
 
 ```
-# 実行(通常時はimageがすでに出来上がっている)
-docker-compose up
+# コンテナ起動+実行(通常時はimageがすでに出来上がっている)
+docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要)  up
 
 # バックグランドで実行したい時(-dつけないとコンソール開いて実行中になる)
 docker-compose up -d
 
-# Dockerfileを再ビルド()
-docker-compose build
+# Dockerfileを再ビルド
+docker-compose  -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) build
 
 # 停止
-docker-compose down
+docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要)  down
 
 # コンテナ削除
-docker-compose rm
+docker-compose  -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) rm
 ```
 
 docker compose 一覧<br>
