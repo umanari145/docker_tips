@@ -1,4 +1,4 @@
-CREATE DATABASE sample_db;
+CREATE DATABASE IF NOT EXISTS sample_db;
 use sample_db;
 
 CREATE TABLE users (

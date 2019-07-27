@@ -17,3 +17,5 @@ RUN yum -y install httpd
 RUN curl -sL https://rpm.nodesource.com/setup_11.x | bash -
 RUN yum install -y nodejs
 RUN npm install npm@latest -g
+
+EXPOSE 80
