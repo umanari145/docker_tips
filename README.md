@@ -69,13 +69,19 @@ docker run -it -p 8080:80 -v /Users/matsumoto/docker_dev:/var/www/html --name ce
 #稼働中のコンテナのプロセス確認
 docker ps -a
 
+#コンテナ再起動(止まっていた場合にはこれで再起動)
+docker start コンテナ名(ex: centos)
+
+#コンテナ停止
+docker stop コンテナ名(ex: centos)
+
 ```
 
 ### コンテナ作成中へのコマンド
 
 #### docker exec コンテナへのログイン
 ```
-docker exec -it コンテナ名
+docker exec -it コンテナ名 /bin/bash
 #例
 docker exec -it php-apache /bin/bash
 
