@@ -63,9 +63,9 @@ docker build -t (イメージ名:タグ名)<例web:latest>  .
 
 # -p 8080:80 メインホストの80にコンテナなの8080を割り当て
 # -v /Users/XXXX/docker_dev:/var/www/html メインホストのdocker_devをコンテナ状の/var/wwww/htmlに配置
-# umanari145:centos6 というIMAGEから　--name centos centosという名前のコンテナを作成
+# umanari145/centos6 というIMAGEから(centos7:latestなどのイメージ名:タグ名のことも多い) --name centos centosという名前のコンテナを作成
 
-docker run -it -p 8080:80 -v /Users/matsumoto/docker_dev:/var/www/html --name centos umanari145:centos6  /bin/bash
+docker run -it -p 8080:80 -v /Users/matsumoto/docker_dev:/var/www/html --name centos umanari145/centos6  /bin/bash
 
 #稼働中のコンテナのプロセス確認
 docker ps -a
