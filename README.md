@@ -54,7 +54,8 @@ imageを作成する<br>
 ```
 docker build -t (イメージ名:タグ名)<例web:latest>  .
 ```
-差分のみになるのでDockerfileを更新しておけば差分のみ取り込む
+差分のみになるのでDockerfileを更新しておけば差分のみ取り込む<br>
+(正確には差分があった以降になる。100行あって60行目に変更を加えた場合、60行目以降は全て新しいイメージ作成処理が走る)
 
 
 ### コンテナ作成
@@ -65,7 +66,10 @@ docker build -t (イメージ名:タグ名)<例web:latest>  .
 # -v /Users/XXXX/docker_dev:/var/www/html メインホストのdocker_devをコンテナ状の/var/wwww/htmlに配置
 # umanari145/centos6 というIMAGEから(centos7:latestなどのイメージ名:タグ名のことも多い) --name centos centosという名前のコンテナを作成
 
-docker run -it -p 8080:80 -v /Users/matsumoto/docker_dev:/var/www/html --name centos umanari145/centos6  /bin/bash
+docker run -it -p 8080:80 -v /Users/matsumoto/docker_dev/public_html:/var/www/html --name centos umanari145/centos6  /bin/bash
+
+# centos7はsystemctlを使うためにオプションと起動シェル(/sbin/init)が若干異なる
+docker run --privileged -it -p 8080:80 -d -v /Users/matsumoto/docker_tips/public_html:/var/www/html --name centos umanari145/centos7 /sbin/init
 
 #稼働中のコンテナのプロセス確認
 docker ps -a
@@ -107,19 +111,19 @@ https://qiita.com/naga3/items/be1a062075db9339762d
 
 ```
 # コンテナ起動+実行(通常時はimageがすでに出来上がっている)
-docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要)  up
+docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) up
 
 # バックグランドで実行したい時(-dつけないとコンソール開いて実行中になる)
 docker-compose up -d
 
 # Dockerfileを再ビルド
-docker-compose  -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) build
+docker-compose  -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) build サービス名(指定しなければ全て)
 
 # 停止
-docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要)  down
+docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要)  down サービス名(指定しなければ全て)
 
 # コンテナ削除
-docker-compose  -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) rm
+docker-compose  -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) rm サービス名(指定しなければ全て)
 ```
 
 docker compose 一覧<br>

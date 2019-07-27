@@ -5,10 +5,13 @@ services:
     build:
         context: "./basic_centos7"
         dockerfile: "Dockerfile"
+    privileged: true
+    command: /sbin/init
     ports:
         - "8080:80"
     volumes:
         - ./public_html/:/var/www/html
+
     links:
         - "db:db"
   db:
