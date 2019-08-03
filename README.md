@@ -13,11 +13,6 @@ Docker&Vagrantの基本コマンドなど
 - public_html 実ソースが同期される場所
 - docker-composer.yml 複数コンテナの自動起動
 
-```
-#実ソースへのシンボリックリンク
-ln -s /Library/WebServer/Documents/XXXX/ public_html
-public_html/XXXXというディレクトリが作成される
-```
 
 ### imageのpull&list表示
 
@@ -111,15 +106,13 @@ https://qiita.com/naga3/items/be1a062075db9339762d
 
 ```
 # コンテナ起動+実行(通常時はimageがすでに出来上がっている)
-docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) up
-
 # バックグランドで実行したい時(-dつけないとコンソール開いて実行中になる)
-docker-compose up -d
+docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) up -d サービス名
 
 # Dockerfileを再ビルド
 docker-compose  -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) build サービス名(指定しなければ全て)
 
-# 停止
+# 停止&削除
 docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要)  down サービス名(指定しなければ全て)
 
 # コンテナ削除

@@ -28,7 +28,5 @@ services:
       MYSQL_ROOT_PASSWORD: root
 
     volumes:
-        # 永続化
-        - "./mysql/data:/var/lib/mysql"
         # 初期データを投入するSQLが格納されているdir
         - ./mysql/init/:/docker-entrypoint-initdb.d/
