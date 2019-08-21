@@ -61,6 +61,9 @@ docker build -t (イメージ名:タグ名)<例web:latest>  .
 # -v /Users/XXXX/docker_dev:/var/www/html メインホストのdocker_devをコンテナ状の/var/wwww/htmlに配置
 # umanari145/centos6 というIMAGEから(centos7:latestなどのイメージ名:タグ名のことも多い) --name centos centosという名前のコンテナを作成
 
+#単純起動(外部からアクセスできずサーバーに入って作業するのみ)
+docker run -i -t --name コンテナ名 イメージ名 /bin/bash
+
 docker run -it -p 8080:80 -v /Users/matsumoto/docker_dev/public_html:/var/www/html --name centos umanari145/centos6  /bin/bash
 
 # centos7はsystemctlを使うためにオプションと起動シェル(/sbin/init)が若干異なる

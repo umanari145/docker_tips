@@ -1,0 +1,34 @@
+version: '3'
+services:
+  php5:
+    container_name: "php5"
+    build:
+        context: "./php5"
+        dockerfile: "Dockerfile"
+    privileged: true
+    command: /sbin/init
+    ports:
+        - "8080:80"
+    volumes:
+        - ./public_html/:/var/www/html
+
+    links:
+        - "db:db"
+  db:
+    #dockerfileなくてもpullするだけだったら下記のコメントでもOK
+    #image: "mysql:latest"
+    container_name: "db"
+    build:
+        context: "./mysql"
+        dockerfile: "Dockerfile"
+    environment:
+      MYSQL_DATABASE: sample_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
+
+    volumes:
+        # 永続化することでコンテナ削除してもOK
+        - "./mysql/data:/var/lib/mysql"
+        # 初期データを投入するSQLが格納されているdir
+        - ./mysql/init/:/docker-entrypoint-initdb.d/
