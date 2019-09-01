@@ -123,6 +123,11 @@ docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場�
 
 # コンテナ削除
 docker-compose  -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) rm サービス名(指定しなければ全て)
+
+#外から(コンテナに入らずに)実行
+#php5コンテナでphp -v
+docker-compose run --rm php5 php -v
+
 ```
 
 docker compose 一覧<br>
