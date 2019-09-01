@@ -115,6 +115,9 @@ docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場�
 # Dockerfileを再ビルド
 docker-compose  -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) build サービス名(指定しなければ全て)
 
+#コンテナ起動
+docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要) run -d サービス名
+
 # 停止&削除
 docker-compose -f docker-compose.ymlのファイル名(docker-compose.ymlの場合は不要)  down サービス名(指定しなければ全て)
 
